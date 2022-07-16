@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+
+RO_DATADIR="/usr/share/mental-omega"
+APPDIR="$HOME/.mental-omega"
+RW_DATADIR="$APPDIR/game"
+
+export WINEPREFIX="$APPDIR/wine"
+
+mkdir -p $RW_DATADIR $TOP_NODE $WINEPREFIX
+
+export WINEARCH=win32
+
+if [ ! -f "$APPDIR/xna_installed" ]; then
+  winetricks xna40
+  winetricks winxp
+  ln -s "$RO_DATADIR"/{Resources,MapsMO,Ares.dll,Ares.dll.inj,BINKW32.DLL,Blowfish.dll,clientupdt.dat,cncnet5.dll,cncnet5mo.dll,*.mix,*.exe,qres.dat,qres32.dll} "$RW_DATADIR/"
+  cp -a "$RO_DATADIR"/{INI,"Map Editor","Map Renderer",Maps,*.ini,version} "$RW_DATADIR/"
+  touch "$APPDIR/xna_installed"
+fi
+
+export WINEDLLOVERRIDES="ddraw=n,b"
+wine "$RW_DATADIR/Resources/clientxna.exe"

@@ -1,0 +1,23 @@
+pkgname='mental-omega'
+pkgver=3.3.6
+pkgrel=6
+pkgdesc="Mental Omega is a free unofficial expansion pack for Command & Conquer Red Alert 2 Yuri's Revenge."
+arch=('x86_64' 'i686')
+url="https://mentalomega.com/"
+license=('custom')
+depends=(wine winetricks lib32-gstreamer gstreamer)
+options=('!strip')
+source=("${pkgname}.tar"
+        ${pkgname}.png
+        ${pkgname}.desktop
+        run)
+
+        
+package() {
+  install -d "${pkgdir}/usr/share"
+  cp -r "${pkgname}" "${pkgdir}/usr/share"
+  install -d "${pkgdir}/usr/share/${pkgname}"
+  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${pkgname}.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+  install -Dm755 run "${pkgdir}/usr/bin/${pkgname}"
+} 
