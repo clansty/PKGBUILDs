@@ -1,0 +1,11 @@
+src
+pkg
+*.zst
+*.asar
+*.deb
+.directory
+*.xz
+*.gz
+*_
+*.tar
+mental-omega

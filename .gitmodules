@@ -13,3 +13,6 @@
 [submodule "ddns-go-bin"]
 	path = ddns-go-bin
 	url = ssh://aur@aur.archlinux.org/ddns-go-bin.git
+[submodule "crossover"]
+	path = crossover
+	url = https://aur.archlinux.org/crossover.git

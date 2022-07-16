@@ -1,0 +1,34 @@
+post_install() {
+
+    echo updating wineserver link
+    
+    CX_ROOT="/opt/cxoffice"
+    rm "$CX_ROOT/bin/wineserver"
+    if "$CX_ROOT/bin/wineserver64" -v >/dev/null 2>/dev/null
+    then
+        ln -s wineserver64 "$CX_ROOT/bin/wineserver"
+    else
+        ln -s wineserver32 "$CX_ROOT/bin/wineserver"
+    fi
+    
+    echo "Creating menus and file associations, please wait..."
+    /opt/cxoffice/bin/cxmenu --crossover --install --filter "StartMenu/CrossOver"
+    /opt/cxoffice/bin/cxassoc --crossover --install
+    echo "Done!"
+    echo
+    echo "This is the demo version, to fully activate it you must have a valid serial and register it."
+    echo "More information about this process here:"
+    echo "http://www.codeweavers.com/support/docs/crossover-linux/demo"
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "Removing menus and file associations, please wait..."
+    /opt/cxoffice/bin/cxmenu --crossover --uninstall
+    /opt/cxoffice/bin/cxassoc --crossover --uninstall
+    rm -f /usr/local/share/icons/hicolor/*x*/apps/cxmenu-*.png
+    echo "Done!"
+}
