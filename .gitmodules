@@ -1,0 +1,15 @@
+[submodule "mental-omega-aur"]
+	path = mental-omega-aur
+	url = ssh://aur@aur.archlinux.org/mental-omega.git
+[submodule "netease-music-sync"]
+	path = netease-music-sync
+	url = ssh://aur@aur.archlinux.org/netease-music-sync.git
+[submodule "yesplaymusic-electron"]
+	path = yesplaymusic-electron
+	url = ssh://aur@aur.archlinux.org/yesplaymusic-electron.git
+[submodule "altserver-bin"]
+	path = altserver-bin
+	url = ssh://aur@aur.archlinux.org/altserver-bin.git
+[submodule "ddns-go-bin"]
+	path = ddns-go-bin
+	url = ssh://aur@aur.archlinux.org/ddns-go-bin.git
