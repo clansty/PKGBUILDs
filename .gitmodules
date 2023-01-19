@@ -16,3 +16,6 @@
 [submodule "crossover"]
 	path = crossover
 	url = https://aur.archlinux.org/crossover.git
+[submodule "balena-etcher"]
+	path = balena-etcher
+	url = ssh://aur@aur.archlinux.org/balena-etcher.git
